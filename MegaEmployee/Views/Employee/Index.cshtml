@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index Employee</h1>
+
+<a type="button" class="btn btn-success" asp-controller="Employee" asp-action="Create"><ion-icon name="add-outline" style="font-size: 25px; padding-top:5px"></ion-icon></a>
+
+<p></p>
+
+<table class="table table-striped table-hover align-items-center">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Created Date Time</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var data in Model)
+        {
+            <tr>
+                <th scope="row">@data.Id</th>
+                <td>@data.Name</td>
+                <td>@data.Type</td>
+                <td>@data.CreatedDateTime</td>
+                <td>
+                    <a type="button" class="btn btn-primary" asp-controller="Employee" asp-action="Read" asp-route-Id="@data.Id">
+                        <ion-icon name="eye-outline" style="font-size: 20px"></ion-icon>
+                    </a>
+                    <a type="button" class="btn btn-success" asp-controller="Employee" asp-action="Edit" asp-route-Id="@data.Id">
+                        <ion-icon name="create-outline" style="font-size: 20px"></ion-icon>
+                    </a>
+                    <a type="button" class="btn btn-danger" asp-controller="Employee" asp-action="Delete" asp-route-Id="@data.Id">
+                        <ion-icon name="trash-outline" style="font-size: 20px"></ion-icon>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
